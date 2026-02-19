@@ -1,0 +1,282 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const CTA = 'https://cal.com/troopdegen/lets-build-together?duration=20&overlayCalendar=true';
+
+const journeySteps = [
+  { num: '01', emoji: '🔍', phase: 'DESCUBRE', title: 'Primer contacto con la IA', desc: 'Workshops gratuitos, eventos en campus, demostraciones prácticas. El estudiante descubre que la inteligencia artificial es accesible y aplicable a su campo.', outcome: 'El estudiante descubre que la IA es accesible' },
+  { num: '02', emoji: '📚', phase: 'APRENDE', title: 'Formación estructurada', desc: 'Bootcamps intensivos (Vibe Coding, AgentCamp), mentorship técnico, curriculum basado en proyectos. Aprendizaje activo con herramientas reales de la industria.', outcome: 'Aprende haciendo, no memorizando' },
+  { num: '03', emoji: '🔨', phase: 'CONSTRUYE', title: 'Proyectos reales con impacto', desc: 'Hackathons temáticos, proyectos con empresas reales, construcción de portfolio profesional. El estudiante aplica lo aprendido en contextos de producción.', outcome: 'Construye productos reales con impacto' },
+  { num: '04', emoji: '🚀', phase: 'LANZA', title: 'Inserción profesional', desc: 'Demo Days con jurado mixto (academia + industria), pre-incubación de proyectos, conexión directa con empleadores, certificación de competencias.', outcome: 'Lanza su carrera profesional' },
+];
+
+const methodologies = [
+  { title: 'Learning by Doing', framework: 'Constructivismo + Ciclo de Kolb', desc: 'Cada sesión parte de un problema real. Los estudiantes construyen, reflexionan y iteran — no memorizan definiciones.' },
+  { title: 'Project-Based Learning', framework: 'Aprendizaje Basado en Proyectos', desc: 'Los estudiantes trabajan en proyectos con entregables reales: aplicaciones desplegadas, agentes funcionales, prototipos con usuarios.' },
+  { title: 'Competency-Based Education', framework: 'Certificación por competencias', desc: 'Evaluación basada en lo que el estudiante puede hacer, no en horas sentado. Certificaciones verificables mediante Open Badges.' },
+  { title: 'Peer Learning & Community', framework: 'Conectivismo + Comunidades de Práctica (Wenger)', desc: 'Aprendizaje colaborativo en comunidad: code reviews entre pares, mentoría de alumni, resolución colectiva de problemas.' },
+  { title: 'AI-Assisted Learning', framework: 'Herramientas reales de la industria', desc: 'Los estudiantes aprenden con las mismas herramientas que usan los profesionales: modelos de IA, asistentes de código, plataformas de despliegue.' },
+];
+
+const okrs = [
+  { metric: 'Empleabilidad', target: '80%+', desc: 'Egresados colocados o con proyecto propio en los primeros 6 meses post-programa.' },
+  { metric: 'Certificaciones', target: 'Open Badges', desc: 'Badges verificables por competencia + co-certificación con la universidad participante.' },
+  { metric: 'Portfolio', target: '3-5 proyectos', desc: 'Cada estudiante egresa con proyectos funcionales desplegados y documentados.' },
+  { metric: 'Competencias', target: '5 áreas clave', desc: 'AI literacy, prompt engineering, desarrollo de software, product thinking, colaboración técnica.' },
+  { metric: 'Retención', target: 'Mejora medible', desc: 'Programas extracurriculares que mejoran la retención estudiantil y el engagement.' },
+  { metric: 'Vinculación', target: 'Conexión directa', desc: 'Acceso a empresas tech, sponsors, mentores de la industria y oportunidades de empleo.' },
+];
+
+const collaborationItems = [
+  { title: 'Co-certificación', desc: 'La universidad valida académicamente, Frutero ejecuta la formación técnica. Ambas marcas en el certificado.' },
+  { title: 'Integración Flexible', desc: 'Se adapta como programa curricular (materias optativas, servicio social) o extracurricular (talleres, clubes).' },
+  { title: 'Demo Days Mixtos', desc: 'Jurado compuesto por academia e industria. Los estudiantes presentan proyectos reales ante empleadores potenciales.' },
+  { title: 'Marco Legal Claro', desc: 'Formación para el trabajo (Art. 35 LGE). No requiere RVOE. Compatible con cualquier institución educativa.' },
+  { title: 'Infraestructura Completa', desc: 'Frutero provee plataforma, mentores y contenido. La universidad provee estudiantes, espacios y legitimidad institucional.' },
+];
+
+const programs = [
+  { title: 'Vibe Coding Bootcamp', duration: '4 semanas', level: 'Principiante → Intermedio', desc: 'Front-end development con herramientas de IA. Cada participante despliega una aplicación funcional.', outcomes: 'App desplegada · Badge: AI Builder · Portfolio piece', price: 'Precio institucional: consultar' },
+  { title: 'AgentCamp', duration: '6 semanas', level: 'Intermedio → Avanzado', desc: 'Diseño, construcción y despliegue de agentes de IA. Orquestación, automatización y monetización.', outcomes: 'Agente en producción · Badge: Agent Operator · Certificación', price: 'Precio institucional: consultar' },
+  { title: 'Hack Jams', duration: '2-3 días', level: 'Todos los niveles', desc: 'Hackathons temáticos intensivos. Equipos multidisciplinarios resolviendo retos reales con tecnología.', outcomes: 'Prototipo funcional · Experiencia en equipo · Networking', price: 'Sin costo para la universidad' },
+  { title: 'Workshops Introductorios', duration: '1-2 horas', level: 'Introductorio', desc: 'Sesiones prácticas de primer contacto con IA y herramientas tech. Ideales para eventos en campus.', outcomes: 'Primera experiencia con IA · Activación de interés · Lead cualificado', price: 'Gratuito' },
+];
+
+const synergyPillars = [
+  { emoji: '🎓', title: 'Valor para la Universidad', items: ['Innovación curricular sin inversión en infraestructura', 'Atracción de talento con programas diferenciadores', 'Posicionamiento como institución tech-forward', 'Vinculación verificable con la industria'] },
+  { emoji: '👨‍🎓', title: 'Valor para el Estudiante', items: ['Competencias reales demandadas por el mercado', 'Portfolio profesional desde la universidad', 'Red de contactos en la industria tech', 'Empleabilidad acelerada'] },
+  { emoji: '🏢', title: 'Valor para la Industria', items: ['Talento capacitado y listo para producir', 'Pipeline de contratación predecible', 'Reducción de costos de onboarding', 'Co-creación con universidades'] },
+];
+---
+
+<Layout title="Modelo Educativo Frutero — Formación en IA y Tecnología para el Mundo Real" description="Programa de colaboración universidad-industria: metodología, resultados medibles y oportunidades para tus estudiantes.">
+
+  <!-- Back nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/60">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-heading font-semibold text-base text-foreground no-underline">
+        <span>🍊</span> Frutero Edu
+      </a>
+      <div class="hidden md:flex items-center gap-5 text-xs font-semibold">
+        <a href="#journey" class="modelo-nav text-foreground/70 hover:text-primary no-underline">Camino</a>
+        <a href="#methodology" class="modelo-nav text-foreground/70 hover:text-primary no-underline">Metodología</a>
+        <a href="#okrs" class="modelo-nav text-foreground/70 hover:text-primary no-underline">Resultados</a>
+        <a href="#collaboration" class="modelo-nav text-foreground/70 hover:text-primary no-underline">Colaboración</a>
+        <a href="#programs" class="modelo-nav text-foreground/70 hover:text-primary no-underline">Programas</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-14">
+
+    <!-- Hero -->
+    <section class="min-h-[65svh] flex items-center pt-12 pb-8 md:pt-20">
+      <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight">
+          <span class="inline-block -rotate-2 rounded-lg bg-primary px-4 py-2 text-white">Modelo</span>
+          {' '}Educativo{' '}
+          <span class="inline-block rotate-1 rounded-lg bg-accent px-4 py-2 text-foreground">Frutero</span>
+        </h1>
+        <h3 class="text-2xl md:text-3xl text-foreground font-medium max-w-3xl mx-auto">
+          Formación en IA y Tecnología para el Mundo Real
+        </h3>
+        <p class="text-lg text-muted-fg max-w-2xl mx-auto leading-relaxed">
+          Un puente entre la universidad y la industria tecnológica. Formamos estudiantes con competencias reales, proyectos desplegados y conexión directa con empleadores — mediante metodologías activas y herramientas de vanguardia.
+        </p>
+        <a href="#journey" style="color: #ffffff !important;" class="inline-block bg-primary px-10 py-5 rounded-full font-semibold text-lg hover:brightness-110 transition-all hover:scale-105 transform">
+          Conocer el modelo ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- El Camino del Estudiante -->
+    <section class="py-16 px-4" id="journey">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            El Camino del{' '}
+            <span class="inline-block -rotate-1 rounded-lg bg-secondary px-4 py-2 text-white">Estudiante</span>
+          </h2>
+          <p class="text-xl text-muted-fg">Cuatro etapas progresivas: de la curiosidad a la empleabilidad.</p>
+        </div>
+
+        <div class="space-y-6">
+          {journeySteps.map((step) => (
+            <div class="flex items-start gap-6 md:gap-8">
+              <div class="shrink-0 w-16 h-16 rounded-2xl bg-foreground flex items-center justify-center">
+                <span class="text-2xl font-semibold text-background font-[family-name:var(--font-space)]">{step.num}</span>
+              </div>
+              <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="text-2xl">{step.emoji}</span>
+                  <span class="text-sm font-semibold uppercase tracking-widest text-primary">{step.phase}</span>
+                </div>
+                <h3 class="text-xl font-semibold text-foreground">{step.title}</h3>
+                <p class="text-base text-muted-fg leading-relaxed">{step.desc}</p>
+                <p class="text-sm font-semibold text-primary">→ {step.outcome}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Metodología -->
+    <section class="py-16 px-4" id="methodology">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            Metodología{' '}
+            <span class="subrayado underline-offset-8">Pedagógica</span>
+          </h2>
+          <p class="text-xl text-muted-fg">Fundamentada en marcos educativos probados, aplicada con herramientas de vanguardia.</p>
+        </div>
+
+        <div class="rounded-2xl bg-foreground p-8 md:p-10 space-y-6">
+          {methodologies.map((m) => (
+            <div class="border-b border-background/10 pb-5 last:border-0 last:pb-0">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="text-lg font-semibold text-background">{m.title}</h3>
+                <span class="rounded-full bg-primary/20 text-primary px-3 py-0.5 text-xs font-semibold">{m.framework}</span>
+              </div>
+              <p class="text-base text-background/70 leading-relaxed">{m.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- OKRs -->
+    <section class="py-16 px-4" id="okrs">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            Resultados{' '}
+            <span class="inline-block rotate-1 rounded-lg bg-accent px-4 py-2 text-foreground">Medibles</span>
+          </h2>
+          <p class="text-xl text-muted-fg">OKRs orientados a lo que importa: empleabilidad, competencias y vinculación.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+          {okrs.map((okr) => (
+            <div class="rounded-2xl border-2 border-border bg-card p-6 space-y-3 text-center">
+              <h4 class="font-semibold text-base text-foreground">{okr.metric}</h4>
+              <div class="text-4xl font-semibold text-primary">{okr.target}</div>
+              <p class="text-sm text-muted-fg">{okr.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Modelo de Colaboración -->
+    <section class="py-16 px-4" id="collaboration">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            Modelo de{' '}
+            <span class="inline-block -rotate-1 rounded-lg bg-primary px-4 py-2 text-white">Colaboración</span>
+          </h2>
+          <p class="text-xl text-muted-fg">Flexible, legal y diseñado para complementar — no competir — con la oferta universitaria.</p>
+        </div>
+
+        <div class="space-y-4">
+          {collaborationItems.map((item, i) => (
+            <div class="flex items-start gap-5 rounded-2xl border-2 border-border bg-background p-6 transition-all hover:border-primary/50">
+              <span class="shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">{i + 1}</span>
+              <div>
+                <h3 class="font-semibold text-lg text-foreground">{item.title}</h3>
+                <p class="text-base text-muted-fg mt-1 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Programas Disponibles -->
+    <section class="py-16 px-4" id="programs">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            Programas{' '}
+            <span class="subrayado underline-offset-8">Disponibles</span>
+          </h2>
+          <p class="text-xl text-muted-fg">Formatos adaptables a las necesidades de cada institución.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6 stagger">
+          {programs.map((prog) => (
+            <div class="rounded-2xl border-2 border-border bg-card p-6 space-y-4">
+              <h3 class="font-semibold text-xl text-foreground">{prog.title}</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">{prog.duration}</span>
+                <span class="rounded-full bg-foreground/10 text-foreground px-3 py-1 text-xs font-semibold">{prog.level}</span>
+              </div>
+              <p class="text-base text-muted-fg leading-relaxed">{prog.desc}</p>
+              <div class="text-sm text-foreground space-y-1">
+                <div><span class="font-semibold">Outcomes:</span> <span class="text-muted-fg">{prog.outcomes}</span></div>
+                <div><span class="font-semibold">Precio:</span> <span class="text-primary font-semibold">{prog.price}</span></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Puntos de Sinergia -->
+    <section class="py-16 px-4" id="synergy">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl md:text-4xl text-foreground">
+            Puntos de{' '}
+            <span class="inline-block rotate-1 rounded-lg bg-secondary px-4 py-2 text-white">Sinergia</span>
+          </h2>
+          <p class="text-xl text-muted-fg">Valor compartido para todos los actores del ecosistema.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6 stagger">
+          {synergyPillars.map(({ emoji, title, items }) => (
+            <div class="rounded-2xl bg-foreground p-6 space-y-4">
+              <div class="text-3xl">{emoji}</div>
+              <h3 class="font-semibold text-lg text-background">{title}</h3>
+              <ul class="space-y-2 text-sm text-background/70">
+                {items.map((item) => (
+                  <li class="flex gap-2"><span class="text-primary">✓</span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4">
+      <div class="max-w-3xl mx-auto text-center space-y-8">
+        <div class="rounded-2xl bg-foreground p-10 md:p-14 space-y-6">
+          <h2 class="text-3xl md:text-4xl text-background font-semibold">
+            Exploremos la colaboración
+          </h2>
+          <p class="text-xl text-background/70">Agenda una reunión de 20 minutos para analizar cómo adaptar el modelo a las necesidades de tu institución.</p>
+          <a href={CTA} target="_blank" rel="noopener" style="color: #ffffff !important;" class="inline-block bg-primary px-10 py-5 rounded-full font-semibold text-lg hover:brightness-110 transition-all hover:scale-105 transform">
+            Agendar reunión →
+          </a>
+          <p class="text-background/50 text-sm">o escríbenos a mel@frutero.club</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border/60 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p class="text-foreground/30 text-xs">© 2026 Frutero LLC — Modelo Educativo.</p>
+      <p class="text-foreground/20 text-xs">
+        <a href="https://frutero.club" target="_blank" rel="noopener" class="hover:text-foreground/50 transition-colors">frutero.club</a>
+      </p>
+    </div>
+  </footer>
+
+</Layout>

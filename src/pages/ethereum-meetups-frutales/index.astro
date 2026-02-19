@@ -1,0 +1,517 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Ethereum Meetups Frutales — Red de Educación Ethereum en México';
+const description = 'Infraestructura distribuida para educación Ethereum de calidad en México. 3 regiones, 12 meetups, 1 red coordinada. Respaldado por Ethereum Foundation.';
+
+const navLinks = [
+  { href: '#mision', label: 'Misión' },
+  { href: '#red', label: 'Red' },
+  { href: '#programa', label: 'Programa' },
+  { href: '#equipo', label: 'Equipo' },
+  { href: '#ecosistema', label: 'Ecosistema' },
+  { href: '#para-colaboradores', label: 'Colabora' },
+  { href: '#impacto', label: 'Impacto' },
+  { href: '#contacto', label: 'Contacto' },
+];
+
+const calendar = [
+  { q: 'Q1', months: [
+    { month: 'Ene', region: 'CDMX', color: 'border-primary bg-primary/15' },
+    { month: 'Feb', region: 'GDL / AGS', color: 'border-secondary bg-secondary/15' },
+    { month: 'Mar', region: 'Puebla / Cuernavaca', color: 'border-accent bg-accent/15' },
+  ]},
+  { q: 'Q2', months: [
+    { month: 'Abr', region: 'CDMX', color: 'border-primary bg-primary/15' },
+    { month: 'May', region: 'GDL / AGS', color: 'border-secondary bg-secondary/15' },
+    { month: 'Jun', region: 'Puebla / Cuernavaca', color: 'border-accent bg-accent/15' },
+  ]},
+  { q: 'Q3', months: [
+    { month: 'Jul', region: 'CDMX', color: 'border-primary bg-primary/15' },
+    { month: 'Ago', region: 'GDL / AGS', color: 'border-secondary bg-secondary/15' },
+    { month: 'Sep', region: 'Puebla / Cuernavaca', color: 'border-accent bg-accent/15' },
+  ]},
+  { q: 'Q4', months: [
+    { month: 'Oct', region: 'CDMX', color: 'border-primary bg-primary/15' },
+    { month: 'Nov', region: 'GDL / AGS', color: 'border-secondary bg-secondary/15' },
+    { month: 'Dic', region: 'Puebla / Cuernavaca', color: 'border-accent bg-accent/15' },
+  ]},
+];
+
+const tracks = [
+  {
+    emoji: '🔰',
+    title: 'Track 1: Onboarding & Fundamentals',
+    quarters: [
+      'Wallets, ENS, seguridad básica',
+      'Herramientas del ecosistema',
+      'Smart contracts básicos',
+      'Oportunidades y carreras en web3',
+    ],
+  },
+  {
+    emoji: '💰',
+    title: 'Track 2: DeFi Fundamentals',
+    quarters: [
+      'Conceptos básicos de DeFi',
+      'Liquidez y AMMs',
+      'Estrategias avanzadas',
+      'Construyendo en DeFi',
+    ],
+  },
+  {
+    emoji: '🤖',
+    title: 'Track 3: AI Tools for Builders',
+    quarters: [
+      'Introducción a AI + web3',
+      'AI para desarrollo web3',
+      'AI y smart contracts',
+      'Futuro de AI × blockchain',
+    ],
+  },
+];
+
+const coreTeam = [
+  { name: 'Mel (Ángel Meléndez)', role: 'Director del Programa', org: 'Frutero Founder & CEO', emoji: '🍊' },
+  { name: 'Valentín Martínez', role: 'Operaciones', org: 'COO Frutero · PhD Tech Innovation', emoji: '⚙️' },
+  { name: 'Jazmín Orozco', role: 'Community Lead', org: 'Frutero', emoji: '🌸' },
+  { name: 'Sury Bonfil', role: 'Marketing Lead', org: 'ETH Cinco de Mayo · Scroll Delegate', emoji: '📣' },
+];
+
+const regionalLeads = [
+  { name: 'Jesús Jaramillo', city: 'Guadalajara', org: 'PsyLabs', url: 'https://psylabsweb3.xyz', emoji: '🔮' },
+  { name: 'Rosa González', city: 'Aguascalientes', org: 'La Blocka', url: 'https://lablocka.lol', emoji: '🧱' },
+  { name: 'Jorge Magni', city: 'Puebla', org: 'Kairos Research', url: null, emoji: '🔬' },
+];
+
+const ecosistema = {
+  communities: ['Ethereum México', 'ETH Cinco de Mayo', 'H.E.R. DAO México', 'DESCI México', 'Nación Black Flag', 'CriptoUnam', 'CripTec', 'ETH Guadalajara', 'ETH Monterrey', 'mxweb3', 'CryptoPuebla', 'ETH Veracruz', 'CriptoBaja', 'CriptoCuerna'],
+  universities: ['UNAM', 'Tec de Monterrey', 'UDLAP', 'UAA'],
+  protocols: ['Base', 'Uniswap', 'Monad', 'Scroll'],
+  startups: ['EVVM', 'Kairos Research', 'ChipiPay', 'Bando', 'Mobil3', 'La Blocka', 'PsyLabs', 'Hacker Garage', 'Opportuni'],
+  venues: ['Flemish Pixel (CDMX)', 'Chez Vous Time Café (CDMX)', 'LV Offices (CDMX)', 'UNAM (CDMX)', 'Thinkhub Coworking (Puebla)', 'UAA (AGS)', 'Hacker Garage (GDL)'],
+};
+---
+
+<Layout title={title} description={description}>
+
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/60">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-heading font-semibold text-base text-foreground no-underline">
+        <span>🍊</span> Meetups Frutales
+      </a>
+      <div class="hidden md:flex items-center gap-5 text-xs font-semibold">
+        {navLinks.map((link) => (
+          <a href={link.href} class="meetup-nav-link no-underline">{link.label}</a>
+        ))}
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-foreground/70" aria-label="Menú">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md px-4 py-3">
+      <div class="flex flex-wrap gap-3">
+        {navLinks.map((link) => (
+          <a href={link.href} class="meetup-nav-link text-sm no-underline">{link.label}</a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-14">
+
+    <!-- HERO -->
+    <section class="min-h-[80vh] flex items-center relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4 py-24 relative z-10 text-center space-y-8">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary bg-primary/15 px-4 py-2 rounded-full border-2 border-primary">
+          🌐 Ethereum Foundation · Localism Fund
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight">
+          <span class="inline-block -rotate-1 rounded-lg bg-primary px-4 py-2 text-white">Ethereum</span> Meetups<br/>
+          <span class="inline-block rotate-1 rounded-lg bg-accent px-4 py-2 text-foreground">Frutales</span> 🍊
+        </h1>
+        <p class="text-xl md:text-2xl text-muted-fg font-medium font-[family-name:var(--font-space)]">
+          3 regiones · 12 meetups · 1 red coordinada
+        </p>
+        <p class="text-lg text-muted-fg max-w-2xl mx-auto leading-relaxed">
+          Infraestructura distribuida para educación Ethereum de calidad en México. Una red de meetups presenciales coordinados por <strong class="text-foreground">Frutero</strong> y <strong class="text-foreground">ETH CDMX</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contacto" style="color: #ffffff !important;" class="inline-block bg-primary px-8 py-4 rounded-full font-semibold text-lg hover:brightness-110 transition-all hover:scale-105 transform shadow-lg">
+            Asiste a un Meetup
+          </a>
+          <a href="#para-colaboradores" class="inline-block border-2 border-primary text-primary px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary/10 transition-all">
+            Colabora con Nosotros
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISIÓN -->
+    <section id="mision" class="py-20 px-4 bg-muted">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">🎯 Misión</h2>
+          <p class="text-muted-fg text-lg max-w-2xl mx-auto">Educación Ethereum accesible, consistente y sostenible para todo México</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border-2 border-secondary bg-background p-6 space-y-3">
+            <div class="text-2xl">🚧</div>
+            <h3 class="font-semibold text-lg">El Problema</h3>
+            <p class="text-sm text-muted-fg leading-relaxed">Fragmentación geográfica: los eventos se concentran en CDMX. Calidad inconsistente entre comunidades. Falta de sostenibilidad económica y continuidad.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-accent bg-background p-6 space-y-3">
+            <div class="text-2xl">🌐</div>
+            <h3 class="font-semibold text-lg">La Solución</h3>
+            <p class="text-sm text-muted-fg leading-relaxed">Una red distribuida tipo hub-and-spoke: nodos regionales coordinados por Frutero + ETH CDMX. Contenido unificado, marca compartida, impacto medible.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-primary bg-background p-6 space-y-3">
+            <div class="text-2xl">📊</div>
+            <h3 class="font-semibold text-lg">El Dato Clave</h3>
+            <p class="text-sm text-muted-fg leading-relaxed">Las cohortes en español logran tasas de completación <strong class="text-primary text-2xl font-semibold">3.6×</strong> más altas que los recursos solo en inglés.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RED -->
+    <section id="red" class="py-20 px-4">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">🗺️ La Red</h2>
+          <p class="text-muted-fg text-lg">3 regiones, rotación mensual, cobertura nacional</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary"></span> CDMX (Hub Central)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-secondary"></span> Guadalajara + AGS / León</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-accent"></span> Puebla + Cuernavaca / Tlaxcala / Veracruz</div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          {calendar.map((quarter) => (
+            <div class="space-y-3">
+              <div class="text-center font-semibold text-sm text-foreground/40 uppercase tracking-widest">{quarter.q}</div>
+              {quarter.months.map((m) => (
+                <div class={`rounded-xl border-2 p-4 text-center space-y-1 ${m.color}`}>
+                  <div class="font-semibold text-lg">{m.month}</div>
+                  <div class="text-xs text-muted-fg">{m.region}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2">
+            <h3 class="font-semibold">🏙️ Hub CDMX</h3>
+            <p class="text-muted-fg">Capital del ecosistema. Sedes: Flemish Pixel, Chez Vous, LV Offices, UNAM.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2">
+            <h3 class="font-semibold">🌮 Hub Guadalajara</h3>
+            <p class="text-muted-fg">Satélites: Aguascalientes (UAA), León. Sede: Hacker Garage.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2">
+            <h3 class="font-semibold">🏛️ Hub Puebla</h3>
+            <p class="text-muted-fg">Satélites: Cuernavaca, Tlaxcala, Veracruz. Sede: Thinkhub Coworking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMA -->
+    <section id="programa" class="py-20 px-4 bg-muted">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">📚 Programa</h2>
+          <p class="text-muted-fg text-lg">Cada meetup = 3 horas de contenido + networking</p>
+        </div>
+
+        <div class="space-y-6">
+          {tracks.map((track) => (
+            <div class="rounded-2xl border-2 border-border bg-card p-6 space-y-4">
+              <h3 class="font-semibold text-xl">{track.emoji} {track.title}</h3>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {track.quarters.map((content, i) => (
+                  <div class="rounded-xl bg-muted p-3 space-y-1">
+                    <div class="text-xs font-semibold text-primary uppercase">Q{i + 1}</div>
+                    <div class="text-sm text-muted-fg">{content}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center text-sm">
+          <div class="flex items-center gap-2 bg-card border-2 border-border rounded-full px-5 py-3">
+            <span>🤝</span> <span class="text-muted-fg">30-45 min de networking en cada evento</span>
+          </div>
+          <div class="flex items-center gap-2 bg-card border-2 border-border rounded-full px-5 py-3">
+            <span>📡</span> <span class="text-muted-fg">Streaming en vivo de todos los eventos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="py-20 px-4">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">👥 Equipo</h2>
+          <p class="text-muted-fg text-lg">Las personas detrás de la red</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-xs mb-4 text-muted-fg uppercase tracking-widest">Equipo Core</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {coreTeam.map((member) => (
+              <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2 text-center">
+                <div class="text-3xl">{member.emoji}</div>
+                <div class="font-semibold">{member.name}</div>
+                <div class="text-sm text-primary font-semibold">{member.role}</div>
+                <div class="text-xs text-muted-fg">{member.org}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-xs mb-4 text-muted-fg uppercase tracking-widest">Líderes Regionales</h3>
+          <div class="grid sm:grid-cols-3 gap-4">
+            {regionalLeads.map((lead) => (
+              <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2 text-center">
+                <div class="text-3xl">{lead.emoji}</div>
+                <div class="font-semibold">{lead.name}</div>
+                <div class="text-sm text-primary font-semibold">{lead.city}</div>
+                <div class="text-xs text-muted-fg">
+                  {lead.url ? <a href={lead.url} target="_blank" rel="noopener" class="text-primary hover:underline">{lead.org}</a> : lead.org}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOSISTEMA -->
+    <section id="ecosistema" class="py-20 px-4 bg-muted">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">🌎 Ecosistema</h2>
+          <p class="text-muted-fg text-lg">Comunidades, universidades, protocolos y aliados</p>
+        </div>
+
+        <div class="space-y-8">
+          {[
+            { label: '🤝 Comunidades', items: ecosistema.communities },
+            { label: '🎓 Universidades', items: ecosistema.universities },
+            { label: '⛓️ Protocolos', items: ecosistema.protocols },
+            { label: '🚀 Startups', items: ecosistema.startups },
+            { label: '📍 Sedes', items: ecosistema.venues },
+          ].map((group) => (
+            <div>
+              <h3 class="font-semibold text-sm uppercase tracking-widest text-muted-fg mb-3">{group.label}</h3>
+              <div class="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span class="bg-card border-2 border-border rounded-full px-4 py-1.5 text-sm text-foreground">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA COLABORADORES -->
+    <section id="para-colaboradores" class="py-20 px-4">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">🤝 Para Colaboradores</h2>
+          <p class="text-muted-fg text-lg">Universidades, protocolos, empresas: así puedes participar</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="rounded-2xl border-2 border-accent bg-background p-6 space-y-4">
+            <h3 class="font-semibold text-xl">✅ Lo que ofrecemos</h3>
+            <ul class="space-y-3 text-sm text-muted-fg">
+              <li class="flex gap-2"><span class="text-accent font-semibold">→</span> Contenido educativo de calidad, probado y actualizado</li>
+              <li class="flex gap-2"><span class="text-accent font-semibold">→</span> Marca unificada y materiales profesionales</li>
+              <li class="flex gap-2"><span class="text-accent font-semibold">→</span> Red de mentores y speakers experimentados</li>
+              <li class="flex gap-2"><span class="text-accent font-semibold">→</span> Documentación y reportes de impacto</li>
+              <li class="flex gap-2"><span class="text-accent font-semibold">→</span> Streaming y grabación de todos los eventos</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border-2 border-secondary bg-background p-6 space-y-4">
+            <h3 class="font-semibold text-xl">🙏 Lo que necesitamos</h3>
+            <ul class="space-y-3 text-sm text-muted-fg">
+              <li class="flex gap-2"><span class="text-secondary font-semibold">→</span> <strong>Sedes:</strong> Espacios para 20-40 personas con internet y proyector</li>
+              <li class="flex gap-2"><span class="text-secondary font-semibold">→</span> <strong>Speakers:</strong> Expertos locales en Ethereum, DeFi o AI</li>
+              <li class="flex gap-2"><span class="text-secondary font-semibold">→</span> <strong>Difusión:</strong> Ayuda para convocar estudiantes y builders</li>
+              <li class="flex gap-2"><span class="text-secondary font-semibold">→</span> <strong>Patrocinio:</strong> Snacks, merchandising o apoyo económico</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Track record -->
+        <div class="rounded-2xl border-2 border-primary bg-background p-6 space-y-4">
+          <h3 class="font-semibold text-lg">📈 Track Record de Frutero</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+            <div>
+              <div class="text-3xl font-semibold text-primary">50+</div>
+              <div class="text-xs text-muted-fg">Eventos realizados</div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-primary">15</div>
+              <div class="text-xs text-muted-fg">Países alcanzados</div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-primary">1000+</div>
+              <div class="text-xs text-muted-fg">Developers formados</div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-primary">25+</div>
+              <div class="text-xs text-muted-fg">Premios en hackathons</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2 text-center">
+            <div class="text-2xl">🏛️</div>
+            <h4 class="font-semibold text-sm">Universidad</h4>
+            <p class="text-xs text-muted-fg">Ofrece tu campus como sede, integra el programa en actividades extracurriculares</p>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2 text-center">
+            <div class="text-2xl">⛓️</div>
+            <h4 class="font-semibold text-sm">Protocolo / Startup</h4>
+            <p class="text-xs text-muted-fg">Patrocina meetups, envía speakers técnicos, conecta con builders locales</p>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 space-y-2 text-center">
+            <div class="text-2xl">👤</div>
+            <h4 class="font-semibold text-sm">Individuo</h4>
+            <p class="text-xs text-muted-fg">Sé speaker, mentor, o ayuda con la logística local de tu ciudad</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACTO -->
+    <section id="impacto" class="py-20 px-4 bg-muted">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <h2 class="text-3xl sm:text-4xl">📊 Impacto y Transparencia</h2>
+          <p class="text-muted-fg text-lg">Metas medibles, reportes públicos, presupuesto transparente</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="rounded-2xl border-2 border-border bg-card p-5 text-center space-y-1">
+            <div class="text-3xl font-semibold text-primary">15+</div>
+            <div class="text-xs text-muted-fg">Asistentes promedio por meetup</div>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 text-center space-y-1">
+            <div class="text-3xl font-semibold text-primary">50%+</div>
+            <div class="text-xs text-muted-fg">Retención entre meetups</div>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 text-center space-y-1">
+            <div class="text-3xl font-semibold text-primary">4.2+</div>
+            <div class="text-xs text-muted-fg">Satisfacción (de 5)</div>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-5 text-center space-y-1">
+            <div class="text-3xl font-semibold text-primary">200+</div>
+            <div class="text-xs text-muted-fg">Builders impactados</div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl border-2 border-border bg-card p-6 space-y-3">
+            <h3 class="font-semibold">🔍 Reportes Públicos</h3>
+            <ul class="space-y-2 text-sm text-muted-fg">
+              <li class="flex gap-2"><span class="text-primary">✓</span> Reportes trimestrales en Karma GAP</li>
+              <li class="flex gap-2"><span class="text-primary">✓</span> Attestations on-chain por evento</li>
+              <li class="flex gap-2"><span class="text-primary">✓</span> POAPs para asistentes</li>
+            </ul>
+            <a href="https://www.karmahq.xyz/project/frutero-club" target="_blank" rel="noopener" class="inline-block text-sm font-semibold text-primary mt-2 hover:underline">
+              Ver perfil en Karma →
+            </a>
+          </div>
+          <div class="rounded-2xl border-2 border-border bg-card p-6 space-y-3">
+            <h3 class="font-semibold">💰 Presupuesto</h3>
+            <p class="text-sm text-muted-fg">Grant total: <strong class="text-foreground">$3,000 USD</strong> (Ethereum Foundation — Localism Fund)</p>
+            <p class="text-sm text-muted-fg">Costo aproximado por meetup: <strong class="text-foreground">~$250 USD</strong></p>
+            <p class="text-xs text-muted-fg mt-2">Incluye: venue, snacks, materiales, streaming, coordinación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 px-4 bg-foreground">
+      <div class="max-w-3xl mx-auto text-center space-y-8">
+        <h2 class="text-4xl sm:text-5xl text-background">📬 Contacto</h2>
+        <p class="text-xl text-background/70">¿Quieres ser sede, speaker o sponsor? Escríbenos.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://t.me/fruteroclub" target="_blank" rel="noopener" style="color: #ffffff !important;" class="inline-flex items-center justify-center gap-2 bg-primary px-8 py-4 rounded-full font-semibold text-lg hover:brightness-110 transition-all shadow-lg">
+            💬 Telegram
+          </a>
+          <a href="https://twitter.com/fruteroclub" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary/10 transition-all">
+            🐦 @fruteroclub
+          </a>
+        </div>
+        <p class="text-background/50 text-sm">También puedes escribirnos a hola@frutero.club</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border/60 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p class="text-foreground/30 text-xs">© 2025 Frutero Club. Meetups Frutales respaldados por Ethereum Foundation.</p>
+      <p class="text-foreground/20 text-xs">
+        <a href="https://frutero.club" target="_blank" rel="noopener" class="hover:text-foreground/50 transition-colors">frutero.club</a>
+      </p>
+    </div>
+  </footer>
+
+  <style>
+    .meetup-nav-link { color: oklch(0.0969 0 0 / 0.7) !important; transition: color 0.2s; }
+    .meetup-nav-link:hover { color: var(--color-primary) !important; }
+    .meetup-nav-link.active {
+      color: var(--color-primary) !important;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--color-primary);
+    }
+  </style>
+
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.meetup-nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach((section) => observer.observe(section));
+
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu?.classList.add('hidden')));
+  </script>
+
+</Layout>
