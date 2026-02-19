@@ -1,0 +1,38 @@
+---
+import { ts, ta } from '../i18n';
+const { locale = 'es' } = Astro.props;
+
+const pillars = [
+  { key: 'university', emoji: '🏛️', color: 'bg-primary' },
+  { key: 'student', emoji: '🧑‍🎓', color: 'bg-accent' },
+  { key: 'industry', emoji: '🏢', color: 'bg-secondary' },
+];
+---
+
+<section id="synergy" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl text-foreground md:text-4xl lg:text-5xl">
+        {ts(locale, 'synergy.title')}
+      </h2>
+      <p class="mt-4 text-lg text-muted-fg">{ts(locale, 'synergy.subtitle')}</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {pillars.map(({ key, emoji, color }) => (
+        <div class="rounded-2xl bg-foreground p-6 text-background">
+          <div class="mb-4 text-3xl">{emoji}</div>
+          <h3 class="mb-4 text-xl text-primary">{ts(locale, `synergy.${key}.title`)}</h3>
+          <ul class="space-y-3">
+            {ta(locale, `synergy.${key}.items`).map((item) => (
+              <li class="flex items-start gap-2 text-sm leading-relaxed">
+                <span class={`mt-1 inline-block h-2 w-2 shrink-0 rounded-full ${color}`}></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

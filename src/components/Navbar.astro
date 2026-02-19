@@ -1,0 +1,43 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+const langLink = locale === 'es' ? '/en/' : '/';
+---
+
+<nav class="sticky top-0 z-50 border-b-2 border-border bg-background/95 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href={locale === 'es' ? '/' : '/en/'} class="flex items-center gap-2 text-foreground no-underline">
+      <span class="text-2xl">🍊</span>
+      <span class="font-heading text-xl font-semibold">Frutero Edu</span>
+    </a>
+    <div class="hidden items-center gap-6 md:flex">
+      <a href="#journey" class="text-sm font-semibold text-foreground no-underline hover:text-primary">{ts(locale, 'nav.journey')}</a>
+      <a href="#methodology" class="text-sm font-semibold text-foreground no-underline hover:text-primary">{ts(locale, 'nav.methodology')}</a>
+      <a href="#programs" class="text-sm font-semibold text-foreground no-underline hover:text-primary">{ts(locale, 'nav.programs')}</a>
+      <a href="#synergy" class="text-sm font-semibold text-foreground no-underline hover:text-primary">{ts(locale, 'nav.synergy')}</a>
+      <a href={langLink} class="rounded-lg border-2 border-foreground px-3 py-1 text-sm font-semibold text-foreground no-underline hover:bg-foreground hover:text-background transition-colors">
+        {ts(locale, 'nav.lang')}
+      </a>
+    </div>
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="md:hidden text-foreground" aria-label="Menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t-2 border-border px-6 pb-4 md:hidden">
+    <div class="flex flex-col gap-3 pt-3">
+      <a href="#journey" class="text-sm font-semibold text-foreground no-underline">{ts(locale, 'nav.journey')}</a>
+      <a href="#methodology" class="text-sm font-semibold text-foreground no-underline">{ts(locale, 'nav.methodology')}</a>
+      <a href="#programs" class="text-sm font-semibold text-foreground no-underline">{ts(locale, 'nav.programs')}</a>
+      <a href="#synergy" class="text-sm font-semibold text-foreground no-underline">{ts(locale, 'nav.synergy')}</a>
+      <a href={langLink} class="text-sm font-semibold text-primary no-underline">{ts(locale, 'nav.lang')}</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>

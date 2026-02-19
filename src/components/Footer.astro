@@ -1,0 +1,10 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+---
+
+<footer class="border-t-2 border-border py-8">
+  <div class="mx-auto max-w-6xl px-6 text-center">
+    <p class="text-sm text-muted-fg">{ts(locale, 'footer.copyright')}</p>
+  </div>
+</footer>

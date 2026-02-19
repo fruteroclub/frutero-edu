@@ -1,0 +1,46 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+
+const stats = [
+  { key: 'communities', icon: '🌎' },
+  { key: 'completion', icon: '📈' },
+  { key: 'hackathons', icon: '🏆' },
+  { key: 'universities', icon: '🎓' },
+];
+
+const universities = ['UNAM', 'Tec de Monterrey', 'UDLAP', 'UAA'];
+---
+
+<section class="bg-foreground py-16">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Stats -->
+    <div class="stagger grid grid-cols-2 gap-6 md:grid-cols-4">
+      {stats.map(({ key, icon }) => (
+        <div class="animate-fade-up text-center">
+          <div class="text-4xl">{icon}</div>
+          <div class="font-space text-4xl font-semibold text-primary md:text-5xl">
+            {ts(locale, `social.${key}`)}
+          </div>
+          <div class="mt-1 text-sm font-semibold text-background">
+            {ts(locale, `social.${key}.label`)}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Universities -->
+    <div class="mt-12 text-center">
+      <p class="mb-6 text-sm font-semibold uppercase tracking-wider text-background/80">
+        {ts(locale, 'social.trust')}
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        {universities.map((uni) => (
+          <span class="rounded-lg border-2 border-border bg-background px-5 py-3 font-heading text-lg font-semibold text-foreground">
+            {uni}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

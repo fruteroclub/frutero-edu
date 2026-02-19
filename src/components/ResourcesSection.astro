@@ -1,0 +1,36 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+
+const resources = [
+  { key: 'meetups', link: '#meetups', emoji: '🍊', color: 'bg-primary' },
+  { key: 'modelo', link: 'https://dev-frutero-decks.pages.dev/modelo-educativo/', emoji: '📖', color: 'bg-secondary' },
+  { key: 'coworking', link: null, emoji: '🏠', color: 'bg-accent' },
+];
+---
+
+<section class="bg-card py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl text-foreground md:text-4xl lg:text-5xl">
+        {ts(locale, 'resources.title')}
+      </h2>
+      <p class="mt-4 text-lg text-muted-fg">{ts(locale, 'resources.subtitle')}</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {resources.map(({ key, link, emoji, color }) => (
+        <div class="rounded-2xl border-2 border-border bg-background p-6 transition-all hover:shadow-xl">
+          <div class={`mb-4 inline-block rounded-lg ${color} p-3 text-3xl`}>{emoji}</div>
+          <h3 class="mb-2 text-xl text-foreground">{ts(locale, `resources.${key}.title`)}</h3>
+          <p class="mb-4 text-sm leading-relaxed text-muted-fg">{ts(locale, `resources.${key}.desc`)}</p>
+          {link && (
+            <a href={link} target={link.startsWith('http') ? '_blank' : undefined} rel={link.startsWith('http') ? 'noopener' : undefined} class="font-semibold text-primary no-underline hover:underline">
+              {locale === 'es' ? 'Explorar →' : 'Explore →'}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

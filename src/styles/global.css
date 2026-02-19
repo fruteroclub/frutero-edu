@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(0.9895 0.009 78.28);
+  --color-foreground: oklch(0.3 0.02 60);
+  --color-card: #fcf2e9;
+  --color-primary: oklch(0.7652 0.1752 62.57);
+  --color-primary-fg: oklch(0.9851 0 0);
+  --color-secondary: oklch(0.6519 0.2118 22.71);
+  --color-accent: oklch(0.7989 0.1902 126.36);
+  --color-muted: oklch(0.95 0.01 80);
+  --color-muted-fg: oklch(0.40 0 0);
+  --color-border: oklch(0.85 0.01 80);
+  --color-white: #fafafa;
+  --color-black: #030303;
+
+  --font-sans: 'Raleway', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Funnel Display', 'Raleway', system-ui, sans-serif;
+  --font-space: 'Space Grotesk', system-ui, sans-serif;
+
+  --radius: 0.65rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+h1 { font-weight: 800; }
+h2 { font-weight: 700; }
+h3 { font-weight: 600; }
+
+h4 {
+  font-family: var(--font-space);
+}
+
+.subrayado {
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 100ms; }
+.stagger > *:nth-child(3) { animation-delay: 200ms; }
+.stagger > *:nth-child(4) { animation-delay: 300ms; }
+.stagger > *:nth-child(5) { animation-delay: 400ms; }

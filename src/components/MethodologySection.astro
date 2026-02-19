@@ -1,0 +1,43 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+
+const methods = [
+  { key: 'learning', icon: '⚡' },
+  { key: 'pbl', icon: '🏗️' },
+  { key: 'cbe', icon: '🎯' },
+  { key: 'peer', icon: '🤝' },
+  { key: 'ai', icon: '🤖' },
+];
+---
+
+<section id="methodology" class="bg-card py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl text-foreground md:text-4xl lg:text-5xl">
+        {ts(locale, 'methodology.title')}
+      </h2>
+      <p class="mt-4 text-lg text-muted-fg">{ts(locale, 'methodology.subtitle')}</p>
+    </div>
+
+    <div class="stagger grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {methods.map(({ key, icon }, i) => (
+        <div class:list={[
+          "animate-fade-up rounded-2xl p-6 transition-all hover:shadow-xl",
+          i === 4 ? "bg-foreground text-background md:col-span-2 lg:col-span-1" : "border-2 border-border bg-background"
+        ]}>
+          <div class="mb-3 text-3xl">{icon}</div>
+          <h3 class:list={["mb-1 text-xl", i === 4 ? "text-primary" : "text-foreground"]}>
+            {ts(locale, `methodology.${key}.title`)}
+          </h3>
+          <p class:list={["mb-3 font-space text-xs font-semibold uppercase tracking-wider", i === 4 ? "text-accent" : "text-primary"]}>
+            {ts(locale, `methodology.${key}.framework`)}
+          </p>
+          <p class:list={["text-sm leading-relaxed", i === 4 ? "text-background/80" : "text-muted-fg"]}>
+            {ts(locale, `methodology.${key}.desc`)}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

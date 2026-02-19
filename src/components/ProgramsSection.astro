@@ -1,0 +1,50 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+
+const programs = [
+  { key: 'vibe', link: 'https://bootcamp.frutero.club', color: 'bg-primary', emoji: '💻' },
+  { key: 'agent', link: 'https://agentcamp.xyz', color: 'bg-secondary', emoji: '🤖' },
+  { key: 'hackjam', link: null, color: 'bg-accent', emoji: '⚡' },
+  { key: 'workshops', link: null, color: 'bg-foreground', emoji: '🎓' },
+];
+---
+
+<section id="programs" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl text-foreground md:text-4xl lg:text-5xl">
+        {ts(locale, 'programs.title')}
+      </h2>
+      <p class="mt-4 text-lg text-muted-fg">{ts(locale, 'programs.subtitle')}</p>
+    </div>
+
+    <div class="stagger grid gap-6 md:grid-cols-2">
+      {programs.map(({ key, link, color, emoji }) => (
+        <div class="animate-fade-up rounded-2xl border-2 border-border bg-background p-6 transition-all hover:shadow-xl">
+          <div class="mb-4 flex items-center gap-3">
+            <span class="text-3xl">{emoji}</span>
+            <div>
+              <h3 class="text-xl text-foreground">{ts(locale, `programs.${key}.title`)}</h3>
+              <div class="flex gap-2 mt-1">
+                <span class={`rounded-md ${color} px-2 py-0.5 text-xs font-semibold text-white`}>
+                  {ts(locale, `programs.${key}.duration`)}
+                </span>
+                <span class="rounded-md bg-muted px-2 py-0.5 text-xs font-semibold text-muted-fg">
+                  {ts(locale, `programs.${key}.level`)}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="mb-3 text-sm leading-relaxed text-muted-fg">{ts(locale, `programs.${key}.desc`)}</p>
+          <p class="mb-4 font-space text-xs font-semibold text-primary">{ts(locale, `programs.${key}.outcomes`)}</p>
+          {link && (
+            <a href={link} target="_blank" rel="noopener" class="inline-block rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background no-underline transition-transform hover:scale-105">
+              {locale === 'es' ? 'Ver programa →' : 'View program →'}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

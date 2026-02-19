@@ -1,0 +1,22 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+---
+
+<section class="bg-foreground py-20">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <div class="mb-6 text-5xl">🤖</div>
+    <h2 class="mb-4 text-3xl text-background md:text-4xl lg:text-5xl">
+      {ts(locale, 'cta.title')}
+    </h2>
+    <p class="mx-auto mb-8 max-w-2xl text-lg text-background/80">
+      {ts(locale, 'cta.subtitle')}
+    </p>
+    <div class="flex flex-col items-center gap-4">
+      <a href="https://cal.com/troopdegen/lets-build-together?duration=20" target="_blank" rel="noopener" class="inline-block -rotate-1 rounded-xl bg-primary px-10 py-4 text-xl font-semibold text-white no-underline shadow-lg transition-transform hover:rotate-0 hover:scale-105">
+        {ts(locale, 'cta.button')}
+      </a>
+      <p class="text-sm text-background/60">{ts(locale, 'cta.email')}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import { ts } from '../i18n';
+const { locale = 'es' } = Astro.props;
+---
+
+<section class="py-20 md:py-28">
+  <div class="mx-auto max-w-5xl space-y-10 px-6 text-center">
+    <!-- Badge -->
+    <div class="flex justify-center">
+      <span class="rounded-full border-2 border-primary bg-card px-6 py-2 font-space text-sm font-semibold tracking-wider text-foreground">
+        🎓 {ts(locale, 'hero.badge')}
+      </span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
+      {ts(locale, 'hero.title.pre')}{' '}
+      <br class="hidden md:block" />
+      <span class="inline-block -rotate-2 rounded-lg bg-accent px-4 py-2 text-foreground shadow-lg">
+        {ts(locale, 'hero.title.highlight')}
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="mx-auto max-w-3xl text-lg font-medium text-foreground md:text-xl">
+      {ts(locale, 'hero.subtitle')}
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a href="#journey" class="rounded-xl bg-foreground px-8 py-4 text-lg font-semibold text-background no-underline shadow-lg transition-transform hover:scale-105">
+        {ts(locale, 'hero.cta')}
+      </a>
+      <a href="https://cal.com/troopdegen/lets-build-together?duration=20" target="_blank" rel="noopener" class="rounded-xl border-2 border-foreground px-8 py-4 text-lg font-semibold text-foreground no-underline transition-colors hover:bg-foreground hover:text-background">
+        {ts(locale, 'hero.cta2')}
+      </a>
+    </div>
+  </div>
+</section>
