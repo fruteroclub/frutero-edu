@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   i18n: {
@@ -9,8 +10,6 @@ export default defineConfig({
     },
   },
   vite: {
-    css: {
-      transformer: 'lightningcss',
-    },
+    plugins: [tailwindcss()],
   },
 });
