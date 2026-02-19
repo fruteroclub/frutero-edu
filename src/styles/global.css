@@ -2,14 +2,14 @@
 
 @theme inline {
   --color-background: oklch(0.9895 0.009 78.28);
-  --color-foreground: oklch(0.3 0.02 60);
+  --color-foreground: oklch(0.0969 0 0);
   --color-card: #fcf2e9;
   --color-primary: oklch(0.7652 0.1752 62.57);
   --color-primary-fg: oklch(0.9851 0 0);
   --color-secondary: oklch(0.6519 0.2118 22.71);
   --color-accent: oklch(0.7989 0.1902 126.36);
   --color-muted: oklch(0.95 0.01 80);
-  --color-muted-fg: oklch(0.40 0 0);
+  --color-muted-fg: oklch(0.2744 0 0);
   --color-border: oklch(0.85 0.01 80);
   --color-white: #fafafa;
   --color-black: #030303;
