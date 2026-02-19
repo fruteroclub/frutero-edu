@@ -6,16 +6,24 @@ const stats = [
   { key: 'communities', icon: '🌎' },
   { key: 'completion', icon: '📈' },
   { key: 'hackathons', icon: '🏆' },
-  { key: 'universities', icon: '🎓' },
 ];
 
-const universities = ['UNAM', 'Tec de Monterrey', 'UDLAP', 'UAA'];
+const partners = [
+  { name: 'Base', logo: '/images/logos/partners/base-logo-black.svg', url: 'https://base.org' },
+  { name: 'Scroll', logo: '/images/logos/partners/scroll-logo-black.svg', url: 'https://scroll.io' },
+  { name: '0x Protocol', logo: '/images/logos/partners/0x-logo-black.svg', url: 'https://0x.org' },
+  { name: 'BuidlGuidl', logo: '/images/logos/partners/buidlguidl-logo-black.svg', url: 'https://buidlguidl.com' },
+  { name: 'Monad', logo: '/images/logos/partners/monad-logo-blacl.svg', url: 'https://monad.xyz' },
+  { name: 'ETHGlobal', logo: '/images/logos/partners/ethglobal-logo-color.svg', url: 'https://ethglobal.com' },
+  { name: 'The Graph', logo: '/images/logos/partners/thegraph-logo-black.svg', url: 'https://thegraph.com' },
+  { name: 'Polygon', logo: '/images/logos/partners/polygon-logo-black.svg', url: 'https://polygon.com' },
+];
 ---
 
 <section class="bg-foreground py-16">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Stats -->
-    <div class="stagger grid grid-cols-2 gap-6 md:grid-cols-4">
+    <div class="stagger grid grid-cols-3 gap-6">
       {stats.map(({ key, icon }) => (
         <div class="animate-fade-up text-center">
           <div class="text-4xl">{icon}</div>
@@ -29,18 +37,50 @@ const universities = ['UNAM', 'Tec de Monterrey', 'UDLAP', 'UAA'];
       ))}
     </div>
 
-    <!-- Universities -->
-    <div class="mt-12 text-center">
-      <p class="mb-6 text-sm font-semibold uppercase tracking-wider text-background/80">
-        {ts(locale, 'social.trust')}
+    <!-- Partners -->
+    <div class="mt-14 text-center space-y-6">
+      <p class="text-sm font-semibold uppercase tracking-wider text-background/60">
+        {ts(locale, 'social.partners')}
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-6">
-        {universities.map((uni) => (
-          <span class="rounded-lg border-2 border-border bg-background px-5 py-3 font-heading text-lg font-semibold text-foreground">
-            {uni}
-          </span>
-        ))}
+
+      <!-- Logo row with CSS animation marquee -->
+      <div class="relative overflow-hidden">
+        <!-- Fade edges -->
+        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-16 md:w-24" style="background: linear-gradient(to right, #030303, transparent);"></div>
+        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-16 md:w-24" style="background: linear-gradient(to left, #030303, transparent);"></div>
+
+        <div class="flex animate-marquee gap-12 py-4" style="width: max-content;">
+          {[...partners, ...partners].map((p) => (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center px-2 no-underline">
+              <img src={p.logo} alt={`${p.name} logo`} class="h-10 w-28 object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-14 md:w-36" style="filter: brightness(0) invert(1); opacity: 0.5;" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <div class="pt-4">
+        <p class="text-xl text-background/80 md:text-2xl">
+          {ts(locale, 'social.tagline.pre')}
+        </p>
+        <h3 class="text-3xl md:text-4xl leading-tight mt-2">
+          <span class="font-semibold text-primary">{ts(locale, 'social.tagline.fresh')}</span><br />
+          <span class="font-semibold text-accent">{ts(locale, 'social.tagline.organic')}</span>
+        </h3>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+</style>

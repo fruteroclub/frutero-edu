@@ -18,9 +18,10 @@ export default {
   'social.completion.label': 'Completion rate',
   'social.hackathons': '25+',
   'social.hackathons.label': 'Hackathon wins',
-  'social.universities': '4+',
-  'social.universities.label': 'Partner universities',
-  'social.trust': 'Institutions that trust the model:',
+  'social.partners': 'Technology leaders backing our guarantee:',
+  'social.tagline.pre': 'Our quality seal:',
+  'social.tagline.fresh': 'Certified Freshness',
+  'social.tagline.organic': 'Organic Quality',
 
   'journey.title': 'The Student Journey',
   'journey.subtitle': 'Four progressive stages: from curiosity to employability.',

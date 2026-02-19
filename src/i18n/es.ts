@@ -18,9 +18,10 @@ export default {
   'social.completion.label': 'Tasa de finalización',
   'social.hackathons': '25+',
   'social.hackathons.label': 'Victorias en hackathons',
-  'social.universities': '4+',
-  'social.universities.label': 'Universidades aliadas',
-  'social.trust': 'Instituciones que confían en el modelo:',
+  'social.partners': 'Líderes de tecnología que respaldan nuestra garantía:',
+  'social.tagline.pre': 'Nuestro sello de calidad:',
+  'social.tagline.fresh': 'Frescura Certificada',
+  'social.tagline.organic': 'Calidad Orgánica',
 
   'journey.title': 'El Camino del Estudiante',
   'journey.subtitle': 'Cuatro etapas progresivas: de la curiosidad a la empleabilidad.',
