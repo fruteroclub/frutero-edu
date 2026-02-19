@@ -9,9 +9,8 @@ export default {
   'hero.badge': 'COLABORACIÓN UNIVERSITARIA',
   'hero.title.pre': 'Posiciona tu universidad como',
   'hero.title.highlight': 'referente en IA',
-  'hero.subtitle': 'Un puente entre la universidad y la industria tecnológica. Formamos estudiantes con competencias reales, proyectos desplegados y conexión directa con empleadores.',
-  'hero.cta': 'Conocer el modelo ↓',
-  'hero.cta2': 'Agendar reunión →',
+  'hero.subtitle': 'Un puente entre la universidad y la industria tecnológica. Formación en competencias reales, proyectos desplegados y conexión directa con empleadores.',
+  'hero.cta': 'Ver el modelo completo ↓',
 
   'social.communities': '15+',
   'social.communities.label': 'Comunidades activas',
@@ -97,10 +96,10 @@ export default {
   'synergy.industry.title': 'Valor para la Industria',
   'synergy.industry.items': ['Talento capacitado y listo para producir', 'Pipeline de contratación predecible', 'Reducción de costos de onboarding', 'Co-creación con universidades'],
 
-  'cta.title': 'Exploremos la colaboración',
-  'cta.subtitle': 'Nuestro agente de IA, Aibus, ya está ayudando a estudiantes a construir proyectos reales. ¿Listo para llevar eso a tu universidad?',
-  'cta.button': 'Agendar reunión de 20 min →',
-  'cta.email': 'o escríbenos a mel@frutero.club',
+  'cta.title': 'Contacto',
+  'cta.subtitle': 'Para explorar una colaboración o solicitar más información sobre el modelo educativo, programas disponibles y casos de éxito.',
+  'cta.button': 'Agendar una conversación →',
+  'cta.email': 'mel@frutero.club',
 
   'footer.copyright': '© 2026 Frutero LLC — Modelo Educativo.',
 } as Record<string, string | string[]>;

@@ -9,9 +9,8 @@ export default {
   'hero.badge': 'UNIVERSITY COLLABORATION',
   'hero.title.pre': 'Position your university as a',
   'hero.title.highlight': 'leader in AI',
-  'hero.subtitle': 'A bridge between university and the tech industry. We train students with real competencies, deployed projects, and direct employer connections.',
-  'hero.cta': 'Explore the model ↓',
-  'hero.cta2': 'Book a meeting →',
+  'hero.subtitle': 'A bridge between university and the tech industry. Training in real competencies, deployed projects, and direct employer connections.',
+  'hero.cta': 'See the full model ↓',
 
   'social.communities': '15+',
   'social.communities.label': 'Active communities',
@@ -97,10 +96,10 @@ export default {
   'synergy.industry.title': 'Value for Industry',
   'synergy.industry.items': ['Trained talent ready to produce', 'Predictable hiring pipeline', 'Reduced onboarding costs', 'Co-creation with universities'],
 
-  'cta.title': 'Let\'s explore collaboration',
-  'cta.subtitle': 'Our AI agent, Aibus, is already helping students build real projects. Ready to bring that to your university?',
-  'cta.button': 'Book a 20-min meeting →',
-  'cta.email': 'or write to mel@frutero.club',
+  'cta.title': 'Contact',
+  'cta.subtitle': 'To explore a collaboration or request more information about the educational model, available programs, and success stories.',
+  'cta.button': 'Schedule a conversation →',
+  'cta.email': 'mel@frutero.club',
 
   'footer.copyright': '© 2026 Frutero LLC — Educational Model.',
 } as Record<string, string | string[]>;
